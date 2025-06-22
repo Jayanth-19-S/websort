@@ -20,7 +20,7 @@ export const CareerParticleAnimation = () => {
             duration: Math.random() * 1.5 + 0.5, // 0.5s to 2s
             repeat: Infinity,
             repeatType: "reverse" as const,
-            ease: "easeInOut",
+            ease: "easeInOut" as const,
             delay: Math.random() * 2,
           },
           animate: {

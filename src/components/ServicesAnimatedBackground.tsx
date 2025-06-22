@@ -19,7 +19,7 @@ export const ServicesAnimatedBackground = () => {
           duration: Math.random() * 15 + 10,
           repeat: Infinity,
           repeatType: "reverse" as const,
-          ease: "easeInOut",
+          ease: "easeInOut" as const,
           delay: Math.random() * 3,
         },
         animate: {

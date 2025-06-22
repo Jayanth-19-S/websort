@@ -19,7 +19,7 @@ export const ContactFormAnimation = () => {
           duration: Math.random() * 20 + 15,
           repeat: Infinity,
           repeatType: "mirror" as const,
-          ease: "linear",
+          ease: "linear" as const,
           delay: Math.random() * -20,
         },
         animate: {
