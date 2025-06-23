@@ -101,7 +101,7 @@ const NavLink = ({ item }: { item: { label: string; path: string; pagePath: stri
           </RouterLink>
 
           <button
-            className="md:hidden text-[#1E1E5A] text-3xl border-0 bg-transparent"
+            className="md:hidden text-[#1E1E5A] text-3xl border-0 bg-transparent ml-4"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
             <FaBars />

@@ -1,24 +1,20 @@
-import logo from '../assets/logo.png';
+import whitelogo from '../assets/whitelogoo.jpg';
 
 export default function Footer() {
   return (
     <footer className="w-full">
       {/* Main Footer Section */}
-      <div className="bg-gray-900 text-white pt-8 pb-4">
+      <div className="bg-black text-white pt-8 pb-4">
         <div className="max-w-6xl mx-auto px-6 flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8">
           {/* Left Side - Logo and Brand */}
           <div className="flex-1">
-            {/* Logo with DAE5FF Color Filter */}
+            {/* White Logo */}
             <div className="flex items-center space-x-3 mb-4">
               <div className="relative">
                 <img
-                  src={logo}
+                  src={whitelogo}
                   alt="WebSort Logo"
                   className="h-12 w-auto"
-                  style={{
-                    filter:
-                      "brightness(0) saturate(100%) invert(89%) sepia(18%) saturate(1234%) hue-rotate(201deg) brightness(103%) contrast(101%)",
-                  }}
                 />
               </div>
             </div>
@@ -31,7 +27,7 @@ export default function Footer() {
           </div>
 
           {/* Right Side - Social Media Icons */}
-          <div className="flex items-center space-x-4 mt-6 lg:mt-0">
+          <div className="flex items-center justify-center lg:justify-end space-x-4 mt-6 lg:mt-0 w-full lg:w-auto">
             {/* Google */}
             <a
               href="#"
@@ -63,6 +59,16 @@ export default function Footer() {
             >
               <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+              </svg>
+            </a>
+            {/* Gmail */}
+            <a
+              href="mailto:info@thewebsort.com"
+              className="w-10 h-10 bg-red-500 rounded-full flex items-center justify-center hover:bg-red-600 transition-colors"
+              aria-label="Gmail"
+            >
+              <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-.904.732-1.636 1.636-1.636h.682l10.682 8.045L23.318 3.82h.682c.904 0 1.636.732 1.636 1.636z"/>
               </svg>
             </a>
           </div>
