@@ -7,7 +7,7 @@ export default function WorkPage() {
   const navigate = useNavigate();
 
   const handleExploreMore = () => {
-    navigate('/services');
+    navigate('/projects');
   };
 
   return (
