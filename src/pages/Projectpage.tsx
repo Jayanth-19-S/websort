@@ -1,47 +1,30 @@
 import { motion } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
-import appImg from "../assets/app.png";
-import marketImg from "../assets/market.png";
-import uiuxImg from "../assets/uiux.jpg";
-import webImg from "../assets/web.png";
+import { useEffect, useState } from "react";
+import bagImg from "../assets/bag.jpg";
+import beautyImg from "../assets/beauty.jpg";
+import carImg from "../assets/car.jpg";
+import clothImg from "../assets/cloth.jpg";
+import eleiotImg from "../assets/eleiot.jpg";
+import fhomeImg from "../assets/fhome.jpg";
+import hrImg from "../assets/hr.jpg";
+import plateformImg from "../assets/plateform.jpg";
+import ttenniesImg from "../assets/tennies.jpg";
 import Footer from "../components/Footer";
 
+const projects = [
+  { image: eleiotImg, title: "GND", desc: "Accurate data capture with high-performance IoT Sensors designed for precision monitoring in real-time." },
+  { image: fhomeImg, title: "cloud 7", desc: "Cloud 7 Properties in Bangalore  presents a diverse selection of 3 BHK flats catering to Luxurious Living. For those seeking premium experiences, Attractive Only @₹3 Crore, boasting world-class amenities, prime locations, and stunning architecture." },
+  { image: bagImg, title: "Boombolt", desc: "Boombolt offers a focused line of Indian-made, design-forward backpacks and duffel bags. The site makes it easy to explore, compare and purchase, backed by business support for dealers and affiliates." },
+  { image: plateformImg, title: "Sonovate", desc: "Empowering recruitment agencies with flexible funding and embedded solutions for scale.." },
+  { image: beautyImg, title: "Tilt", desc: "Korean beauty secrets infused with ingredients that truly work for Indian skin. Powered by Ginseng, the ultimate skin-repairing powerhouse, and Rice Water, nature's hydration and brightening elixir." },
+  { image: clothImg, title: "Belore Slims", desc: "Belore Slims is a women's fashion brand offering tummy-tucker jeggings, leggings, and shapewear designed for comfort, confidence, and a flattering fit." },
+  { image: hrImg, title: "stickyhr", desc: "The best HR software for StickyHR companies and startups to manage employee, payroll assistance, time off, attendance tracking with single software." },
+  { image: carImg, title: "Cngen Services", desc: "our expert technicians ensure top-notch vehicle maintenance and repairs, ensuring your vehicle remains reliable.Cngen services provide car washing services in bangalore." },
+  { image: ttenniesImg, title: "PongKart", desc: "PongKart is India's premier online store for table tennis equipment, offering a wide range of blades, rubbers, balls, and accessories from top brands. " },
+];
+
 export default function Projectpage() {
-  const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const [activeIndex, setActiveIndex] = useState(1);
-  const [isMobile, setIsMobile] = useState(false);
-  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-
-  const projects = [
-    {
-      title: "App development",
-      image: appImg,
-    },
-    {
-      title: "UI/UX Design",
-      image: uiuxImg,
-    },
-    {
-      title: "Web development",
-      image: webImg,
-    },
-    {
-      title: "Digital Marketing",
-      image: marketImg,
-    },
-  ];
-
-  // Check if mobile
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
 
   // Mouse movement tracking
   useEffect(() => {
@@ -56,70 +39,6 @@ export default function Projectpage() {
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
-  // Intersection observer
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.1 },
-    );
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-    return () => observer.disconnect();
-  }, []);
-
-  // Auto-play functionality
-  useEffect(() => {
-    if (isAutoPlaying && isVisible) {
-      const interval = setInterval(() => {
-        setActiveIndex((prev) => (prev + 1) % projects.length);
-      }, 4000);
-      return () => clearInterval(interval);
-    }
-  }, [isAutoPlaying, isVisible, projects.length]);
-
-  const containerVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.1,
-        duration: 0.8,
-      },
-    },
-  };
-
-  const handleCardClick = (index: number) => {
-    setActiveIndex(index);
-    setIsAutoPlaying(false);
-    setTimeout(() => setIsAutoPlaying(true), 5000); // Resume auto-play after 5 seconds
-  };
-
-  const getVisibleCards = () => {
-    if (isMobile) {
-      return [{ ...projects[activeIndex], originalIndex: activeIndex, position: "center" }];
-    }
-
-    const totalCards = projects.length;
-    const leftIndex = (activeIndex - 1 + totalCards) % totalCards;
-    const centerIndex = activeIndex;
-    const rightIndex = (activeIndex + 1) % totalCards;
-
-    return [
-      { ...projects[leftIndex], originalIndex: leftIndex, position: "left" },
-      { ...projects[centerIndex], originalIndex: centerIndex, position: "center" },
-      { ...projects[rightIndex], originalIndex: rightIndex, position: "right" },
-    ];
-  };
-
-  const visibleCards = getVisibleCards();
-
   // Animated particles
   const particles = Array.from({ length: 20 }, (_, i) => ({
     id: i,
@@ -130,7 +49,7 @@ export default function Projectpage() {
 
   return (
     <>
-      <div className="min-h-screen relative overflow-hidden bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
+      <div className="min-h-screen relative overflow-hidden bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 py-16 flex flex-col items-center">
         {/* Animated Background Elements */}
         
         {/* Floating Particles */}
@@ -300,120 +219,71 @@ export default function Projectpage() {
           }}
         />
 
-        <div className="relative z-10 max-w-6xl mx-auto px-4 py-16 flex flex-col items-center">
-          <motion.h2 
-            className="text-4xl lg:text-5xl font-bold text-white mb-8 mt-2 text-center bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent"
-            animate={{
-              backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
-            }}
-            transition={{
-              duration: 5,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-            style={{
-              backgroundSize: '200% 200%',
-            }}
-          >
-            Our Project
-          </motion.h2>
-
-          {/* Decorative Line */}
-          <motion.div
-            className="w-32 h-1 bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 rounded-full mb-16"
-            initial={{ scaleX: 0 }}
-            animate={{ scaleX: 1 }}
-            transition={{
-              duration: 1,
-              delay: 0.5,
-              ease: "easeOut",
-            }}
-          />
-
-          <motion.div
-            ref={sectionRef}
-            className="w-full flex flex-col items-center"
-            variants={containerVariants}
-            initial="hidden"
-            animate={isVisible ? "visible" : "hidden"}
-          >
-            {/* Carousel Container */}
-            <div className="relative flex items-center justify-center mt-16 w-full">
-              <div className="flex items-center justify-center gap-12 w-full max-w-[1100px]">
-                <div className={`flex items-center justify-center ${isMobile ? 'w-full' : 'gap-12'} relative`}>
-                  {visibleCards.map((project) => {
-                    const isCenter = project.position === "center";
-                    let scale = isMobile ? 1 : (isCenter ? 1.18 : 0.95);
-                    let opacity = isMobile ? 1 : (isCenter ? 1 : 0.8);
-                    let zIndex = isCenter ? 20 : 10;
-
-                    return (
-                      <motion.div
-                        key={`${project.originalIndex}-${activeIndex}`}
-                        className="relative group cursor-pointer transition-all duration-500 ease-out flex flex-col items-center"
-                        style={{
-                          zIndex: zIndex,
-                          width: isMobile ? "280px" : "24rem",
-                          transformOrigin: "center",
-                        }}
-                        initial={{
-                          scale: scale,
-                          opacity: opacity,
-                          x: project.position === "left" ? -100 : project.position === "right" ? 100 : 0,
-                        }}
-                        animate={{
-                          scale: scale,
-                          opacity: opacity,
-                          x: 0,
-                          transition: { 
-                            duration: 0.6, 
-                            ease: "easeInOut",
-                            type: "spring",
-                            stiffness: 100,
-                            damping: 20
-                          },
-                        }}
-                        exit={{
-                          scale: 0.8,
-                          opacity: 0,
-                          x: project.position === "left" ? -100 : project.position === "right" ? 100 : 0,
-                          transition: { duration: 0.4, ease: "easeInOut" },
-                        }}
-                        onClick={() => handleCardClick(project.originalIndex)}
-                        whileHover={{
-                          scale: isMobile ? 1.05 : (isCenter ? 1.15 : scale + 0.05),
-                          transition: { duration: 0.3 },
-                        }}
-                      >
-                        <div
-                          className={`relative overflow-hidden rounded-3xl p-2 shadow-2xl ${isCenter
-                              ? "border-4 border-pink-400 bg-gradient-to-r from-pink-500 to-purple-600 shadow-pink-500/25"
-                              : "border-4 border-white bg-gradient-to-r from-blue-500/50 to-purple-500/50 shadow-blue-500/20"
-                            }`}
-                        >
-                          <img
-                            src={project.image}
-                            alt={project.title}
-                            className={`rounded-2xl object-cover ${isCenter ? "w-96 h-96" : "w-72 h-72"}`}
-                          />
-                        </div>
-                        <div className="mt-6 flex justify-center">
-                          <span
-                            className={`px-5 py-2 rounded-full font-semibold text-sm shadow transition-all duration-300 ${isCenter
-                                ? "bg-gradient-to-r from-pink-500 to-purple-600 text-white"
-                                : "bg-white text-gray-900"
-                              }`}
-                          >
-                            {project.title}
-                          </span>
-                        </div>
-                      </motion.div>
-                    );
-                  })}
-                </div>
+        {/* Projects Vertical List */}
+        <div className="relative z-10 w-full max-w-4xl flex flex-col gap-16">
+          <h2 className="text-4xl font-bold text-center text-gray-900 dark:text-white mb-2">
+            Our Projects
+          </h2>
+          <div className="h-1.5 w-40 mx-auto bg-gradient-to-r from-blue-400 to-purple-500 rounded-full mb-16 sm:mb-20"></div>
+          {projects.map((project, idx) => (
+            <motion.div
+              key={idx}
+              className={`flex flex-col md:flex-row items-center md:items-stretch bg-transparent rounded-2xl shadow-none overflow-visible group ${idx % 2 === 1 ? 'md:flex-row-reverse' : ''}`}
+              initial={{ opacity: 0, x: idx % 2 === 0 ? -60 : 60 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ delay: idx * 0.1, duration: 0.7, type: "spring" }}
+            >
+              <img
+                src={project.image}
+                alt={project.title}
+                className="w-full md:w-1/2 h-64 object-cover rounded-2xl shadow-md"
+              />
+              <div className="flex flex-col justify-center items-center md:items-start p-8 w-full md:w-1/2 bg-white bg-opacity-90 dark:bg-transparent">
+                <h3 className="text-2xl md:text-3xl font-bold mb-4 text-gray-900 dark:text-white">{project.title}</h3>
+                <p className="text-lg text-gray-700 dark:text-gray-200 mb-6">{project.desc}</p>
+                {project.title === "GND" ? (
+                  <a href="https://gndsolutions.in/" target="_blank" rel="noopener noreferrer">
+                    <button className="px-6 py-2 border-2 border-gray-800 dark:border-white text-gray-900 dark:text-white rounded-full font-semibold hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Read More</button>
+                  </a>
+                ) : project.title === "stickyhr" ? (
+                  <a href="https://www.stickyhr.com/" target="_blank" rel="noopener noreferrer">
+                    <button className="px-6 py-2 border-2 border-gray-800 dark:border-white text-gray-900 dark:text-white rounded-full font-semibold hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Read More</button>
+                  </a>
+                ) : project.title === "Cngen Services" ? (
+                  <a href="https://play.google.com/store/apps/details?id=com.services.cngenservices&pcampaignid=web_share" target="_blank" rel="noopener noreferrer">
+                    <button className="px-6 py-2 border-2 border-gray-800 dark:border-white text-gray-900 dark:text-white rounded-full font-semibold hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Read More</button>
+                  </a>
+                ) : project.title === "Belore Slims" ? (
+                  <a href="https://www.beloreslims.com/" target="_blank" rel="noopener noreferrer">
+                    <button className="px-6 py-2 border-2 border-gray-800 dark:border-white text-gray-900 dark:text-white rounded-full font-semibold hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Read More</button>
+                  </a>
+                ) : project.title === "Tilt" ? (
+                  <a href="https://tiltcosmetics.in/" target="_blank" rel="noopener noreferrer">
+                    <button className="px-6 py-2 border-2 border-gray-800 dark:border-white text-gray-900 dark:text-white rounded-full font-semibold hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Read More</button>
+                  </a>
+                ) : project.title === "Sonovate" ? (
+                  <a href="https://www.sonovate.com/" target="_blank" rel="noopener noreferrer">
+                    <button className="px-6 py-2 border-2 border-gray-800 dark:border-white text-gray-900 dark:text-white rounded-full font-semibold hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Read More</button>
+                  </a>
+                ) : project.title === "Boombolt" ? (
+                  <a href="https://boombolt.in/" target="_blank" rel="noopener noreferrer">
+                    <button className="px-6 py-2 border-2 border-gray-800 dark:border-white text-gray-900 dark:text-white rounded-full font-semibold hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Read More</button>
+                  </a>
+                ) : project.title === "cloud 7" ? (
+                  <a href="https://cloud7properties.com/" target="_blank" rel="noopener noreferrer">
+                    <button className="px-6 py-2 border-2 border-gray-800 dark:border-white text-gray-900 dark:text-white rounded-full font-semibold hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Read More</button>
+                  </a>
+                ) : project.title === "PongKart" ? (
+                  <a href="https://www.pongkart.com/" target="_blank" rel="noopener noreferrer">
+                    <button className="px-6 py-2 border-2 border-gray-800 dark:border-white text-gray-900 dark:text-white rounded-full font-semibold hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Read More</button>
+                  </a>
+                ) : (
+                  <button className="px-6 py-2 border-2 border-gray-800 dark:border-white text-gray-900 dark:text-white rounded-full font-semibold hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Read More</button>
+                )}
               </div>
-            </div>
-          </motion.div>
+            </motion.div>
+          ))}
         </div>
       </div>
       <Footer />

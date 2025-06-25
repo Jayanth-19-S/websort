@@ -1,9 +1,9 @@
 import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import appImg from "../assets/app.png";
+import img2 from "../assets/img2.jpg"; // Example image, replace with actual project images
 import uiuxImg from "../assets/uiux.jpg";
 import webImg from "../assets/web.png";
-import img2 from "../assets/img2.jpg"; // Example image, replace with actual project images
 
 export default function Projectpage() {
   const [isVisible, setIsVisible] = useState(false);
@@ -133,9 +133,10 @@ export default function Projectpage() {
       </div>
 
       <div className="relative z-10 max-w-6xl mx-auto px-4 py-16 flex flex-col items-center">
-        <h2 className="text-4xl lg:text-5xl font-bold text-white mb-20 mt-2 text-center">
+        <h2 className="text-4xl lg:text-5xl font-bold text-white mb-4 mt-2 text-center">
           Our Project
         </h2>
+        <div className="w-32 h-1 bg-gradient-to-r from-pink-500 via-yellow-400 to-blue-500 rounded-full mx-auto mb-8"></div>
 
         <motion.div
           ref={sectionRef}
@@ -219,6 +220,21 @@ export default function Projectpage() {
                 })}
               </div>
             </div>
+          </div>
+          {/* Carousel Dots */}
+          <div className="flex justify-center mt-24 gap-3">
+            {projects.map((_, idx) => (
+              <button
+                key={idx}
+                onClick={() => handleCardClick(idx)}
+                className={`w-4 h-4 rounded-full transition-all duration-300 border-2 focus:outline-none ${
+                  idx === activeIndex
+                    ? "bg-gradient-to-r from-pink-500 to-purple-600 border-pink-500 scale-125 shadow-lg"
+                    : "bg-white/60 border-gray-300 hover:scale-110"
+                }`}
+                aria-label={`Go to project ${idx + 1}`}
+              />
+            ))}
           </div>
         </motion.div>
       </div>

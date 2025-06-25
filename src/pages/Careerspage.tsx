@@ -73,7 +73,7 @@ useEffect(() => {
               Talent wins games, but teamwork <br /> and intelligence win championships.
             </h1>
             <p className="text-justify text-gray-300 text-base">
-              At Websort, we bring digital ideas to life through expert web and app development, digital marketing, and UI/UX design. Based in Bangalore, we build responsive websites and mobile apps, enhance online visibility with SEO, PPC, and social media, and design user-friendly interfaces. Choose Websort for innovative, tailored digital solutions.
+            At Websort, we’re more than just a tech company — we’re a team of innovators, creators, and problem-solvers passionate about shaping the digital world. Whether you're a developer, designer, marketer, or strategist, Websort offers a dynamic environment to grow your skills, explore new ideas, and make an impact.
             </p>
           </motion.div>
 
