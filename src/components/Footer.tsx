@@ -70,7 +70,7 @@ export default function Footer() {
       {/* Copyright Section */}
       <div className="bg-[#e6eeff] py-3">
         <div className="max-w-6xl mx-auto px-6">
-          <p className="text-center text-base text-gray-700 font-serif">© 2023-2025 Websort. All rights reserved.</p>
+          <p className="text-center text-base text-gray-700 font-serif">© 2025 Websort. All rights reserved.</p>
         </div>
       </div>
     </footer>
