@@ -2,11 +2,11 @@ import type { Variants } from 'framer-motion';
 import { motion } from 'framer-motion';
 import { ServicesAnimatedBackground } from '../components/ServicesAnimatedBackground.tsx';
 
+import { useEffect } from 'react';
 import appDevImg from '../assets/appdevelopment.jpg';
 import marketingImg from '../assets/market.png';
 import uiuxImg from '../assets/uiux.jpg';
 import webDevImg from '../assets/web.png';
-import { useEffect } from 'react';
 
 const services = [
   {

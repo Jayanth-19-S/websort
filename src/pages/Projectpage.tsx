@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import bagImg from "../assets/bag.jpg";
 import beautyImg from "../assets/beauty.jpg";
 import carImg from "../assets/car.jpg";
@@ -23,27 +23,15 @@ const projects = [
   { image: ttenniesImg, title: "PongKart", desc: "PongKart is India's premier online store for table tennis equipment, offering a wide range of blades, rubbers, balls, and accessories from top brands. ", link: "https://www.pongkart.com/" },
 ];
 
-// Particle type for project-themed particles
-type ProjectParticle = {
-  id: number;
-  x: number;
-  y: number;
-  size: number;
-  speedX: number;
-  speedY: number;
-  color: string;
-  icon: string;
-};
-
 // Simple light particle background component
 function LightParticlesBG() {
-  // Many small, glowing white dot particles (debug: bigger, more opaque)
+  // Many small, visible white dot particles
   const particles = Array.from({ length: 50 }, (_, i) => ({
     id: i,
-    size: Math.random() * 24 + 16, // Debug: 16-40px
+    size: Math.random() * 8 + 6, // 6-14px, slightly larger
     left: Math.random() * 100,
     top: Math.random() * 100,
-    duration: Math.random() * 8 + 8, // 8-16s
+    duration: Math.random() * 8 + 8,
     delay: Math.random() * 8,
   }));
 
@@ -52,19 +40,19 @@ function LightParticlesBG() {
       {particles.map((p) => (
         <motion.div
           key={p.id}
-          className="absolute rounded-full blur-2xl opacity-90"
+          className="absolute rounded-full blur-[2px] opacity-90" // less blur, higher opacity
           style={{
             width: p.size,
             height: p.size,
             left: `${p.left}%`,
             top: `${p.top}%`,
             background: 'white',
-            zIndex: -1, // Debug: higher z-index
+            zIndex: -1,
             pointerEvents: "none",
           }}
           animate={{
-            y: [0, -20, 0],
-            opacity: [0.7, 1, 0.7],
+            y: [0, -10, 0],
+            opacity: [0.8, 1, 0.8], // higher opacity throughout
           }}
           transition={{
             duration: p.duration,
@@ -79,55 +67,16 @@ function LightParticlesBG() {
 }
 
 export default function Projectpage() {
-  const [particles, setParticles] = useState<ProjectParticle[]>([]);
-
   // Scroll to top on mount
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
 
   // Project-themed icons for particles
-  const icons = ["💻", "🚀", "⚡", "🛠️", "📦", "🌐", "🔧", "📱", "🖥️", "🧩"];
-
-  // Initialize particles on mount
-  useEffect(() => {
-    const newParticles: ProjectParticle[] = Array.from({ length: 70 }, (_, i) => ({
-      id: i,
-      x: Math.random() * window.innerWidth,
-      y: Math.random() * window.innerHeight,
-      size: Math.random() * 28 + 18,
-      speedX: (Math.random() - 0.5) * 0.18,
-      speedY: (Math.random() - 0.5) * 0.18,
-      color: `rgba(30, 64, 175, ${Math.random() * 0.25 + 0.18})`, // darker blue with varying opacity
-      icon: icons[Math.floor(Math.random() * icons.length)],
-    }));
-    setParticles(newParticles);
-  }, []);
-
-  // Animate particles
-  useEffect(() => {
-    let animationFrame: number;
-    function animate() {
-      setParticles((prev) =>
-        prev.map((p) => {
-          let nx = p.x + p.speedX;
-          let ny = p.y + p.speedY;
-          // Wrap around screen
-          if (nx < 0) nx = window.innerWidth;
-          if (nx > window.innerWidth) nx = 0;
-          if (ny < 0) ny = window.innerHeight;
-          if (ny > window.innerHeight) ny = 0;
-          return { ...p, x: nx, y: ny };
-        })
-      );
-      animationFrame = requestAnimationFrame(animate);
-    }
-    animate();
-    return () => cancelAnimationFrame(animationFrame);
-  }, []);
+ 
 
   return (
-    <div className="relative w-full min-h-screen overflow-hidden" style={{ background: '#07112a', position: 'relative', zIndex: 0 }}>
+    <div className="relative w-full min-h-screen overflow-hidden" style={{ background: 'linear-gradient(135deg, #0a1437 0%, #000000 100%)', position: 'relative', zIndex: 0 }}>
       {/* Simple light particles background */}
       <LightParticlesBG />
       <div className="relative w-full min-h-screen py-16 flex flex-col items-center overflow-hidden">
@@ -154,9 +103,18 @@ export default function Projectpage() {
 
         {/* Projects Vertical List */}
         <div className="relative z-10 w-full max-w-4xl flex flex-col gap-16">
-          <h2 className="text-4xl font-bold text-center text-gray-900 dark:text-white mb-2">
-            Our Projects
+          {/* White dots background only for project section */}
+          <div className="absolute inset-0 w-full h-full pointer-events-none z-0">
+            <LightParticlesBG />
+          </div>
+          <div className="mb-12">
+          <h2 className="text-5xl md:text-6xl font-extrabold text-center text-white mb-4 relative z-10">
+            Our Projects 
           </h2>
+          <div className="mx-auto h-2 w-40 rounded-full bg-gradient-to-r from-blue-400 to-purple-400 relative z-10"></div>
+        </div>
+
+          
           {projects.map((project, idx) => (
             <motion.div
               key={idx}

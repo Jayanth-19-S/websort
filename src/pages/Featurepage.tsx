@@ -9,12 +9,7 @@ import salesforcesImg from "../assets/salesforces.jpg";
 
 import voiceuiuxImg from "../assets/voiceuiux.jpg";
 
-const iconSVG = (
-  <svg width="32" height="32" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-    <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" fill="none" />
-    <path d="M8 12l2 2l4-4" stroke="currentColor" strokeWidth="2" fill="none" />
-  </svg>
-);
+
 
 const features = [
   {
@@ -141,11 +136,11 @@ export default function Featurepage() {
               </button>
             ))}
           </div>
-          {/* Know More Button - Clear and Sharp */}
+          {/* Know More Button - Unified Style */}
           <button 
             onClick={handleKnowMore}
-            className="relative z-20 px-10 py-3 rounded-md bg-black border border-white text-white font-semibold text-lg shadow-lg hover:bg-white hover:text-black transition-colors duration-300 drop-shadow-lg"
-          >
+            className="border border-white text-white px-6 py-2 rounded hover:bg-white hover:text-[#0a192f] transition-all duration-300 font-semibold"
+            >
             Know More
           </button>
         </div>
