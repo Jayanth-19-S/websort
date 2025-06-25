@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import img6 from "../assets/img6.jpg"
-import roadmapImg from "../assets/roadmap.jpg"
+import roadmapImg from "../assets/Roadmap.png"
 // import AnimatedBlurBar from "../components/animated-blur-bar"
 
 export default function Achievementpage() {
