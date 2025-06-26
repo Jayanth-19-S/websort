@@ -4,7 +4,6 @@ import bagImg from "../assets/bag.jpg";
 import beautyImg from "../assets/beauty.jpg";
 import carImg from "../assets/car.jpg";
 import clothImg from "../assets/cloth.jpg";
-import eleiotImg from "../assets/eleiot.jpg";
 import fhomeImg from "../assets/fhome.jpg";
 import hrImg from "../assets/hr.jpg";
 import plateformImg from "../assets/plateform.jpg";
