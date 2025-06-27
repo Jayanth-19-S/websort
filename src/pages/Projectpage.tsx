@@ -11,7 +11,6 @@ import ttenniesImg from "../assets/tennies.jpg";
 import Footer from "../components/Footer";
 
 const projects = [
-  
   { image: fhomeImg, title: "cloud 7", desc: "Cloud 7 Properties in Bangalore  presents a diverse selection of 3 BHK flats catering to Luxurious Living.", link: "https://cloud7properties.com/" },
   { image: bagImg, title: "Boombolt", desc: "Boombolt offers a focused line of Indian-made, design-forward backpacks and duffel bags.", link: "https://boombolt.in/" },
   { image: plateformImg, title: "Sonovate", desc: "Empowering recruitment agencies with flexible funding and embedded solutions for scale..", link: "https://www.sonovate.com/" },
