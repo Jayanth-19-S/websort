@@ -11,5 +11,6 @@
         "dest": "/index.html"
       }
     ],
-    "outputDirectory": "dist"
+    "outputDirectory": "dist",
+    "build": "tsc -b && vite build"
   }
